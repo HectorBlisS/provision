@@ -1,0 +1,136 @@
+{%extends 'base.html'%}
+{%load static%}
+
+{%block content%}
+
+
+
+<video id="vid-back" loop autoplay>
+  <source src="{%static 'media/landscape2.mp4'%}" type="video/mp4">
+  
+  Your browser does not support the video tag.
+</video>
+
+<section id="primero"class="section valign-wrapper">
+
+<div id="val" class="valign">
+<h2 class="white-text ">Una decición inteligente para tu futuro.</h2>
+<br>
+<a href="#contacto" id="call-action"class="waves-effect waves-light btn blue"><i class="material-icons right">room</i>¡Cotiza un terreno ya mismo!</a>
+
+</div>
+
+
+
+</section>
+
+<section class="section white">
+
+<article class="container">
+
+	<h2>Somos Visionarios</h2>
+	<p>Creemos en tí</p>
+	
+	<p class="descrip">¿Haz soñado con tener tu propia casa?<br>entonces los desarrollos Pro-visión son para ti.</p>
+	<hr>
+
+	<div class="iconos">
+
+
+
+	<div class="cuadros row">
+	<div class="col m6">
+	<h3>Compra a Crédito</h3>
+	<p>
+		Tramitamos un credito directo, sin intermediarios. ¡Confiamos en tí!
+	</p>
+	</div>
+	
+		<i class="material-icons col m6">vpn_key</i>
+
+	</div>
+
+	<hr>
+
+	<div class="cuadros row">
+	<i class="material-icons col m6">shopping_cart</i>
+	<div class="col m6">
+	<h3>Excelente Precio de Contado</h3>
+	<p>
+		Si quieres el mejor lote al mejor precio, el pago de contado es tu opción, con toda la seguridad del tramite ante notario.
+	</p>
+	</div>
+	
+		
+
+	</div>
+
+	<hr>
+
+	<div class="cuadros row">
+	<div class="col m6">
+	<h3>Pocos trámites</h3>
+	<p>
+		Sin necesidad de hacer filas, esperar a realizar un tardado trámite, en TerrenoFácil queremos ayudarte sin necesidad de hacerte sufrir.
+	</p>
+	</div>
+	
+		<i class="material-icons col m6">toc</i>
+
+	</div>
+
+	<hr>
+
+	<div class="cuadros row">
+	<i class="material-icons col m6">supervisor_account</i>
+	<div class="col m6">
+	<h3>Sin aval</h3>
+	<p>
+		Sabemos que es muy complicado encontrar alguién de tu confianza para que sea tu aval, es por eso que nosotros no te lo pedimos como requisito.
+	</p>
+	</div>
+	
+		
+
+	</div>
+		
+
+
+	</div>
+	
+	
+</article>
+
+</section>
+
+
+<section id="contacto" class="section grey lighten-5">
+
+<br>
+<br>
+
+	<article class="row container">
+	<h2>Contáctanos</h2>
+	<p>Estamos ansiosos por atenderte</p>
+	
+	<p class="descrip">En breve un asesor se comunicará contigo para atenderte correctamente.</p>
+	<hr>
+		<img class="responsive-img col m6" src="{%static 'media/easy.png'%}" alt="">
+		<form class="col m6" method="POST" action="{%url '_recibe'%}">
+		{% csrf_token %}
+		{{ form.as_p }}
+		<button type="submit" class=" save btn btn-default">
+		Solicitar
+		</button>
+			
+		</form>
+		
+
+	</article>
+	
+</section>
+
+
+	
+
+{%endblock content%}

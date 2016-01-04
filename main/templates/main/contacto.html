@@ -1,0 +1,29 @@
+{%extends 'base.html'%}
+{%load static%}
+
+{%block content%}
+
+<section class="row">
+<article class="container">
+
+<a><h1>
+		Bienvenidos, cotiza:
+	</h1></a>
+
+<form method="POST" action="{%url '_recibe'%}">
+
+{% csrf_token %}
+{{ form.as_p }}
+<button type="submit" class="save btn btn-default">
+Preguntar
+</button>
+     
+</form>
+
+	
+</article>
+	
+</section>
+	
+
+{%endblock content%}

@@ -1,0 +1,102 @@
+/*Video Background*/
+#vid-back{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: -100;
+    transform: translateX(-50%) translateY(-50%);
+    background: url({%static 'media/logo_yapase_mx_nuevo.png'%}) no-repeat;
+    background-size: cover;
+    transition: 1s opacity;
+    opacity: 1;
+}
+
+
+/*Fonts*/
+html{
+	font-family: 'Poiret One', cursive;
+		}
+section{
+	text-align: center;
+}
+
+
+.altito{
+	max-height: 240px;
+	max-width: 200px;
+}
+
+.alto-responsive{
+	max-height: 4.2rem;
+	width: auto;
+}
+
+#val{
+	text-align: center;
+
+}
+#val h2{
+	margin: 0 auto;
+	font-size: 7rem;
+	text-align: center;
+}
+#primero{
+	height: 100vh;
+	background:rgba(0,0,0,.2);
+}
+#call-action{
+	font-size: 2rem;
+	font-family: 'Oswald', sans-serif;
+	text-align: center;
+
+}
+.descrip{
+	font-size: 2rem;
+}
+hr {
+    border: none;
+    border-bottom: 1px solid #EFEFEF;
+    margin: 55px 0;
+}
+.cuadros h3{
+	color:#00b0ff;
+}
+.cuadros p{
+	font-size: 1.5rem;
+}
+.cuadros i{
+	color:#00b0ff;
+	font-size: 5rem;
+	border-radius: 500px;
+	border:1px solid #00b0ff;
+	padding: 2rem;
+	margin-top:2rem;
+	transition: all .5s ease;
+}
+.cuadros i:hover{
+	color:white;
+	background-color:#00b0ff;
+
+}
+
+label {
+     
+     font-size: 1.5rem;
+   }
+
+
+@media all and (max-width: 580px) {
+	.alto-responsive{
+		height: 4rem;
+	}
+	#call-action{
+		font-size:1rem;
+	}
+	h2{
+		font-size:3rem;
+	}
+}

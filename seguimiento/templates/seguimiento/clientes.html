@@ -1,0 +1,84 @@
+{%extends 'base.html'%}
+{%load static%}
+
+{%block content%}
+<div class="section row grey">
+
+<div class="opciones row container">
+  
+
+          <div class="altito hoverable card col m4 s3">
+            <div class="card-image">
+              <img src="{%static 'media/email_icon.png'%}">
+              <span class="card-title"></span>
+            </div>
+            <div class="card-action hide-on-small-only">
+              <a href="#">E-mail Masivo</a>
+            </div>
+          </div>
+
+          <div class="altito hoverable card col m4 s3">
+            <div class="card-image">
+              <img src="{%static 'media/users_icon.png'%}">
+              <span class="card-title"></span>
+            </div>
+            <div class="card-action hide-on-small-only">
+              <a href="#">+ Usuario</a>
+            </div>
+          </div>
+
+          <div class="altito hoverable card col m4 s3">
+            <div class="card-image">
+              <img src="{%static 'media/gear_icon.png'%}">
+              <span class="card-title"></span>
+            </div>
+            <div class="card-action hide-on-small-only">
+              <a href="#">Configuración</a>
+            </div>
+          </div>
+
+
+</div>
+
+  <nav class="green">
+    <div class="nav-wrapper">
+      <div class="col s12">
+        <a href="#!" id="Todos" class="breadcrumb">Todos</a>
+        <a href="#!" id="Cerrados" class="breadcrumb">Cerrados</a>
+        <a href="#!" id="Revisados" class="breadcrumb">Revisados</a>
+        <a href="#!" id="Nuevos" class="breadcrumb">Nuevos</a>
+      </div>
+    </div>
+  </nav>
+  <br/>
+  <br/>
+  <br/>
+
+  
+
+<div class="container">
+
+
+
+
+<ul class="collection">
+{%for msg in mensajes%}
+
+	<a href="{%url '_revisar' msg.id%}">
+	 <li class="collection-item avatar">
+      <i class="material-icons circle green">insert_chart</i>
+      <span class="title">{{msg.nombre}}</span>
+      <p>{{msg.size}}<br>
+         {{msg.plazo}}
+      </p>
+      <a href="#!" class="secondary-content"><i class="material-icons">query_builder</i>   // {{msg.date}}</a>
+    </li>
+    </a>
+
+{%endfor%}
+</ul>
+</div>
+</div>
+
+
+{%endblock content%}

@@ -1,0 +1,81 @@
+{%extends "base.html"%}
+{%load static%}
+
+{%block content%}
+<div class="section grey">
+<div class="container">
+
+
+
+  <div class="row white">
+    <form method="post" class="col s12">
+    {% csrf_token %}
+      <div class="row">
+
+        <div class="input-field col s6">
+          <i class="material-icons prefix">account_circle</i>
+          <input name="nombre"value="{{mensaje.nombre}}"type="text" class="validate">
+          <label for="icon_prefix">Nombre</label>
+        </div>
+
+        <div class="input-field col s6">
+          <i class="material-icons prefix">phone</i>
+          <input name="tel"value="{{mensaje.tel}}" type="tel" class="validate">
+          <label for="icon_telephone">Teléfono</label>
+        </div>
+
+        <div class="input-field col s6">
+          <i class="material-icons prefix">email</i>
+          <input name="mail"value="{{mensaje.mail}}" type="email" class="validate">
+          <label for="icon_telephone">E-mail</label>
+        </div>
+
+        <div class="input-field col s6">
+          <i class="material-icons prefix">input</i>
+          <input disabled="disabled" value="{{mensaje.size}}" type="text" class="validate">
+          <label for="icon_telephone">Tamaño</label>
+        </div>
+
+        <div class="input-field col s6">
+          <i class="material-icons prefix">av_timer</i>
+          <input disabled="disabled" value="{{mensaje.plazo}}" type="text" class="validate">
+          <label for="icon_telephone">Plazo</label>
+        </div>
+
+        <div class="input-field col s6">
+        <input value="{{mensaje.contacto}}"name="contacto"id="fecha" type="date" class="datepicker">
+        <label for "fecha">Proximo Contacto</label>
+        </div>
+
+
+        <div class="input-field col s12">
+          <textarea name="coment"class="materialize-textarea">{{mensaje.comentario}}</textarea>
+          <label for="textarea1">Comentar</label>
+        </div>
+
+      </div>
+
+        <a class="waves-effect waves-light btn right red"><i class="material-icons left">done_all</i>Cerrado!</a>
+
+         <button type="submit" class="waves-effect waves-light btn right orange"><i class="material-icons left">done</i>Pendiente</button>
+
+         <a href="{%url '_inicio'%}"class="waves-effect waves-light btn right green"><i class="material-icons left">youtube_searched_for</i>Volver</a>
+
+         <a href="#!"class="waves-effect waves-light btn left blue"><i class="material-icons left">mail</i>Enviar E-mail</a>
+
+
+
+    </form>
+  </div>
+
+
+
+
+
+
+</form>
+
+</div>
+</div>
+
+{%endblock%}
