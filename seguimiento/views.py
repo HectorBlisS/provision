@@ -68,6 +68,9 @@ class Revisar(View):
 			# print("formateada: ",formateada)
 			msj.contacto=formateada
 		# msj.nombre=request.POST.get("state","")
+		# if fecha==None:
+		# 	formateada="None"
+		# 	msj.contacto=formateada
 		msj.save()
 		return redirect("_inicio")
 
