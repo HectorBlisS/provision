@@ -15,6 +15,7 @@ from django.utils.decorators import method_decorator
 # Login
 from django.contrib.auth import authenticate,login, logout
 from django.contrib.auth.decorators import permission_required
+from django.core.urlresolvers import reverse
 
 # Create your views here.
 # class SeguiIndex(View):
@@ -24,11 +25,9 @@ from django.contrib.auth.decorators import permission_required
 # 		return render(request,template)
 
 # class SeguiStatus(TemplateView):
-class SeguiStatus(View):
-	# @method_decorator(permission_required("auth.econo1"),)
-	# @permission_required("econo1")
-	# @login_required
-	# @method_decorator(login_required)
+
+class SeguiStatus(View): # _inicio
+
 	@method_decorator(permission_required("auth.adm", login_url='_home'))
 	def get(self,request):
 		preguntas=NuevaPregunta.objects.all().order_by('date')
@@ -112,7 +111,7 @@ class Login(View):
 	def get(self,request):
 		template="seguimiento/login.html"
 		if request.user.is_authenticated():
-			return redirect(reverse("_inicio"))
+			return redirect("_inicio")
 		else:
 			# mensaje=""
 			return render(request,template)
