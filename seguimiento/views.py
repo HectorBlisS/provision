@@ -17,6 +17,8 @@ from django.contrib.auth import authenticate,login, logout
 from django.contrib.auth.decorators import permission_required
 from django.core.urlresolvers import reverse
 
+from django.utils import timezone
+
 # Create your views here.
 # class SeguiIndex(View):
 # 	def get(self,request):
@@ -69,7 +71,6 @@ class Revisar(View):
 		msj.save()
 		return redirect("_inicio")
 
-
 class RecibeGracias(View):
 	def get(self,request):
 		template="main/gracias.html"
@@ -87,13 +88,13 @@ class RecibeGracias(View):
 				'Sistema Terrenos',
 				'Miguel, Tienes una nueva cotización pendiente',
 				'hola@fixter.org',
-				['rotcehcm@hotmail.com'], fail_silently=False
+				['tterrenofacil@gmail.com'], fail_silently=False
 				)
 			# agradecemos al cliente y enviamos info
 			send_mail(
 				'Gracias por tu interez!',
-				'Aqui cargaremos un html predefinido',
-				'hola@fixter.org',
+				'Pronto te haremos una llamada.',
+				'tterrenofacil@gmail.org',
 				[cliente_mail], fail_silently=False
 				)
 			return redirect('_recibe')
