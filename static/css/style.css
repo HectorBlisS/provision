@@ -9,7 +9,7 @@
     height: auto;
     z-index: -100;
     transform: translateX(-50%) translateY(-50%);
-    background: url({%static 'media/logo_yapase_mx_nuevo.png'%}) no-repeat;
+    /*background: url({%static 'media/logo_yapase_mx_nuevo.png'%}) no-repeat;*/
     background-size: cover;
     transition: 1s opacity;
     opacity: 1;
