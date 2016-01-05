@@ -1,0 +1,24 @@
+{%extends "base.html"%}
+
+{%block content%}
+
+
+<section class="section">
+	<article class="row container">
+		
+		<h2>Ingreso al sistema de Admiistración.</h2>
+		<a 
+		href="{% url 'social:begin' 'facebook' %}?next={{ request.path }}"
+		class="blue waves-effect waves-light btn-large"><i class="material-icons right">settings_power</i>Entrar</a>
+
+
+	</article>
+</section>
+
+
+
+
+{%endblock%}
+
+{%block footer%}
+{%endblock footer%}

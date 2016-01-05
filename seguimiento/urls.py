@@ -6,9 +6,9 @@ urlpatterns = [
     views.SeguiStatus.as_view(),
     name='_inicio'), 
 
-    url(r'^$',
-    views.SeguiIndex.as_view(),
-    name='_index'), 
+    # url(r'^$',
+    # views.SeguiIndex.as_view(),
+    # name='_index'), 
 
     url(r'^gracias/$',
     views.RecibeGracias.as_view(),
@@ -17,5 +17,9 @@ urlpatterns = [
     url(r'^inicio/(?P<id>\d+)',
     views.Revisar.as_view(),
     name='_revisar'),
+
+    url(r'^login/$',
+        views.Login.as_view(),
+        name='_login'),
 
 	]

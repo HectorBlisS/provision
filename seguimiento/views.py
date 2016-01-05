@@ -12,19 +12,24 @@ from django.utils import formats
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
 
+# Login
+from django.contrib.auth import authenticate,login, logout
+from django.contrib.auth.decorators import permission_required
+
 # Create your views here.
-class SeguiIndex(View):
-	def get(self,request):
-		template='seguimiento/index.html'
-		# context={}
-		return render(request,template)
+# class SeguiIndex(View):
+# 	def get(self,request):
+# 		template='seguimiento/index.html'
+# 		# context={}
+# 		return render(request,template)
 
 # class SeguiStatus(TemplateView):
 class SeguiStatus(View):
 	# @method_decorator(permission_required("auth.econo1"),)
 	# @permission_required("econo1")
 	# @login_required
-	@method_decorator(login_required)
+	# @method_decorator(login_required)
+	@method_decorator(permission_required("auth.adm", login_url='_home'))
 	def get(self,request):
 		preguntas=NuevaPregunta.objects.all().order_by('date')
 		context={"mensajes":preguntas}
@@ -32,7 +37,7 @@ class SeguiStatus(View):
 		return render(request,template_name,context)
 
 class Revisar(View):
-	@method_decorator(login_required)
+	@method_decorator(permission_required("auth.adm"),)
 	def get(self,request,id):
 		print ("entro al get")
 		template_name="seguimiento/revisar.html"
@@ -102,3 +107,19 @@ class RecibeGracias(View):
 			"form":form
 			}
 			return render(request,template_name,context)
+
+class Login(View):
+	def get(self,request):
+		template="seguimiento/login.html"
+		if request.user.is_authenticated():
+			return redirect(reverse("_inicio"))
+		else:
+			# mensaje=""
+			return render(request,template)
+
+
+
+
+
+
+

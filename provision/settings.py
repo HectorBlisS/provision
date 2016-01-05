@@ -148,5 +148,34 @@ DEFAULT_FROM_EMAIL=False
 # USE_L10N=True
 # DATE_INPUT_FORMATS = ('%d-%m-%Y','%Y-%m-%d')
 
-LOGIN_URL='_home'
+LOGIN_URL='_login'
+
+
+# Social auth
+AUTHENTICATION_BACKENDS = (
+    'social.backends.facebook.FacebookOAuth2',
+    'django.contrib.auth.backends.ModelBackend',)
+
+SOCIAL_AUTH_FACEBOOK_KEY="1623909724551044"
+SOCIAL_AUTH_FACEBOOK_SECRET='9ae884ea1c34fbd2ae127b48096fea34'
+SOCIAL_AUTH_FACEBOOK_SCOPE = ['email']
+SOCIAL_AUTH_FACEBOOK_PROFILE_EXTRA_PARAMS = {
+  'locale': 'ru_RU',
+  'fields': 'id, name, email, age_range'
+}
+
+SOCIAL_AUTH_LOGIN_REDIRECT_URL="_home"
+
+SOCIAL_AUTH_PIPELINE = (
+    'social.pipeline.social_auth.social_details',
+    'social.pipeline.social_auth.social_uid',
+    'social.pipeline.social_auth.auth_allowed',
+    'social.pipeline.social_auth.social_user',
+    'social.pipeline.user.get_username',
+    'social.pipeline.user.create_user',
+    # 'usuarios.pipelines.save_profile_picture',  # <--- set the import-path to the function
+    'social.pipeline.social_auth.associate_user',
+    'social.pipeline.social_auth.load_extra_data',
+    'social.pipeline.user.user_details'
+)
 
