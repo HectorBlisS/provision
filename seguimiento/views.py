@@ -128,6 +128,7 @@ class TerrenoFacilForm(View):
 		nombre+=" - TFacil"
 		telefono=request.GET.get("tel","")
 		mail=request.GET.get("mail","")
+		size=request.GET.get("size","")
 		plazo=request.GET.get("plazo")
 
 		newPregunta=NuevaPregunta(
