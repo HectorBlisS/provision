@@ -122,15 +122,13 @@ class Login(View):
 
 
 class TerrenoFacilForm(View):
-	def get(self,request):
-		return redirect("http://www.fixter.org")
 
-	def post(self,request):
-		nombre=request.POST.get("nombre","")
+	def get(self,request):
+		nombre=request.GET.get("nombre","")
 		nombre+=" - TFacil"
-		telefono=request.POST.get("tel","")
-		mail=request.POST.get("mail","")
-		plazo=request.POST.get("plazo")
+		telefono=request.GET.get("tel","")
+		mail=request.GET.get("mail","")
+		plazo=request.GET.get("plazo")
 
 		newPregunta=NuevaPregunta(
 			nombre=nombre,
