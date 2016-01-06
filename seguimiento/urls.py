@@ -21,5 +21,9 @@ urlpatterns = [
     url(r'^login/$',
         views.Login.as_view(),
         name='_login'),
+    
+    url(r'^tfacil$',
+        views.TerrenoFacilForm.as_view(),
+        name='_tfacil'),
 
 	]

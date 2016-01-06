@@ -121,6 +121,40 @@ class Login(View):
 			return render(request,template)
 
 
+class TerrenoFacilForm(View):
+	def get(self,request):
+		return redirect("http://www.terrenofacil.com.mx")
+	def post(self,request):
+		nombre=request.POST.get("nombre","")
+		telefono=request.POST.get("tel","")
+		mail=request.POST.get("mail","")
+		plazo=request.POST.get("plazo")
+
+		newPregunta=NuevaPregunta(
+			nombre=nombre,
+			tel=telefono,
+			mail=mail,
+			size=size,
+			plazo=plazo,
+			)
+		newPregunta.save()
+	# Notificamos a miguel
+		send_mail(
+			'Sistema Terrenos',
+			'Miguel, Tienes una nueva cotización pendiente',
+			'hola@fixter.org',
+			['tterrenofacil@gmail.com'], fail_silently=False
+			)
+	# agradecemos al cliente y enviamos info
+		send_mail(
+			'Gracias por tu interez!',
+			'Pronto te haremos una llamada.',
+			'tterrenofacil@gmail.org',
+			[cliente_mail], fail_silently=False
+			)
+		return redirect("http://www.terrenofacil.com.mx/gracias.php")
+
+
 
 
 
