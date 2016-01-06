@@ -124,6 +124,7 @@ class Login(View):
 class TerrenoFacilForm(View):
 	def get(self,request):
 		return redirect("http://www.fixter.org")
+
 	def post(self,request):
 		nombre=request.POST.get("nombre","")
 		nombre+=" - TFacil"
@@ -144,16 +145,16 @@ class TerrenoFacilForm(View):
 			'Sistema Terrenos',
 			'Miguel, Tienes una nueva cotización pendiente',
 			'hola@fixter.org',
-			['tterrenofacil@gmail.com'], fail_silently=False
+			['rotcehcm@gmail.com'], fail_silently=False
 			)
 	# agradecemos al cliente y enviamos info
 		send_mail(
 			'Gracias por tu interez!',
 			'Pronto te haremos una llamada.',
 			'tterrenofacil@gmail.org',
-			[cliente_mail], fail_silently=False
+			[mail], fail_silently=False
 			)
-		return redirect("http://www.terrenofacil.com.mx/gracias.php")
+		return redirect("http://www.terrenofacil.com.mx/gracias.html")
 
 
 
