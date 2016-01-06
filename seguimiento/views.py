@@ -144,7 +144,7 @@ class TerrenoFacilForm(View):
 			'Sistema Terrenos',
 			'Miguel, Tienes una nueva cotización pendiente',
 			'hola@fixter.org',
-			['rotcehcm@gmail.com'], fail_silently=False
+			['contacto@gmail.com'], fail_silently=False
 			)
 	# agradecemos al cliente y enviamos info
 		send_mail(
