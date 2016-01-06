@@ -89,7 +89,7 @@ class RecibeGracias(View):
 			# Notificamos a miguel
 			send_mail(
 				'Sistema Terrenos',
-				'Miguel, Tienes una nueva cotización pendiente',
+				'Miguel, Tienes una nueva cotización pendiente http://www.provision.com.mx/',
 				'sistema@fixter.org',
 				['pro_vision@hotmail.com'], fail_silently=False
 				)
@@ -142,7 +142,7 @@ class TerrenoFacilForm(View):
 	# Notificamos a miguel
 		send_mail(
 			'Sistema Terrenos',
-			'Miguel, Tienes una nueva cotización pendiente',
+			'Miguel, Tienes una nueva cotización pendiente http://www.provision.com.mx/',
 			'hola@fixter.org',
 			['tterrenofacil@gmail.com'], fail_silently=False
 			)
