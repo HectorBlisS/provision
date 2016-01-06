@@ -32,7 +32,7 @@ class SeguiStatus(View): # _inicio
 
 	@method_decorator(permission_required("auth.adm", login_url='_home'))
 	def get(self,request):
-		preguntas=NuevaPregunta.objects.all().order_by('-date')
+		preguntas=NuevaPregunta.objects.all().order_by('-pk')
 		context={"mensajes":preguntas}
 		template_name="seguimiento/clientes.html"
 		return render(request,template_name,context)
@@ -90,8 +90,8 @@ class RecibeGracias(View):
 			send_mail(
 				'Sistema Terrenos',
 				'Miguel, Tienes una nueva cotización pendiente',
-				'hola@fixter.org',
-				['tterrenofacil@gmail.com'], fail_silently=False
+				'sistema@fixter.org',
+				['pro_vision@hotmail.com'], fail_silently=False
 				)
 			# agradecemos al cliente y enviamos info
 			send_mail(
@@ -144,7 +144,7 @@ class TerrenoFacilForm(View):
 			'Sistema Terrenos',
 			'Miguel, Tienes una nueva cotización pendiente',
 			'hola@fixter.org',
-			['contacto@fixter.org'], fail_silently=False
+			['tterrenofacil@gmail.com'], fail_silently=False
 			)
 	# agradecemos al cliente y enviamos info
 		send_mail(
