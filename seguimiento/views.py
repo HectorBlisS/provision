@@ -123,9 +123,10 @@ class Login(View):
 
 class TerrenoFacilForm(View):
 	def get(self,request):
-		return redirect("http://www.terrenofacil.com.mx")
+		return redirect("http://www.fixter.org")
 	def post(self,request):
 		nombre=request.POST.get("nombre","")
+		nombre+=" - TFacil"
 		telefono=request.POST.get("tel","")
 		mail=request.POST.get("mail","")
 		plazo=request.POST.get("plazo")
