@@ -32,7 +32,7 @@ class SeguiStatus(View): # _inicio
 
 	@method_decorator(permission_required("auth.adm", login_url='_home'))
 	def get(self,request):
-		preguntas=NuevaPregunta.objects.all().order_by('date')
+		preguntas=NuevaPregunta.objects.all().order_by('-date')
 		context={"mensajes":preguntas}
 		template_name="seguimiento/clientes.html"
 		return render(request,template_name,context)

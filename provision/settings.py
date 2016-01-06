@@ -137,10 +137,11 @@ STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 MEDIA_ROOT = os.path.join(BASE_DIR,'media')
 MEDIA_URL = '/media/'
 
-EMAIL_HOST = 'smtp-mail.outlook.com'
+# Correo electronico
+EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = '587'
-EMAIL_HOST_USER = 'rotcehcm@hotmail.com'
-EMAIL_HOST_PASSWORD = 'Superman77'
+EMAIL_HOST_USER = 'tterrenofacil@gmail.com'
+EMAIL_HOST_PASSWORD = 'miguel741010'
 EMAIL_USE_TLS = True
 DEFAULT_FROM_EMAIL=False
 
