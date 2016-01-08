@@ -18,7 +18,8 @@
 
 /*Fonts*/
 html{
-	font-family: 'Poiret One', cursive;
+	/*font-family: 'Poiret One', cursive;*/
+	font-family: 'Montserrat', sans-serif;
 		}
 section{
 	text-align: center;
@@ -40,6 +41,7 @@ section{
 
 }
 #val h2{
+	font-family: 'Poiret One', cursive;
 	margin: 0 auto;
 	font-size: 5rem;
 	text-align: center;
