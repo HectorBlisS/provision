@@ -10,7 +10,7 @@ class NuevaPregunta(models.Model):
 	mail=models.EmailField(max_length=254)
 	size=models.CharField(max_length=25,blank=True,null=True)
 	plazo=models.CharField(max_length=25,blank=True,null=True)
-	date=models.DateField(default=timezone.now)
+	date=models.DateTimeField(default=timezone.now)
 	comentario=models.TextField(blank=True,null=True)
 	cerrado=models.BooleanField(default=False)
 	contacto=models.DateField(default=None,blank=True,null=True)
