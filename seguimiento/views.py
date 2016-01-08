@@ -146,7 +146,7 @@ class TerrenoFacilForm(View):
 		send_mail(
 			'Sistema Terrenos',
 			'Miguel, Tienes una nueva cotización pendiente http://www.provision.com.mx/seguimiento/inicio'+
-			'Nombre: 'nombre+'Teléfono: '+telefono+'Correo: '+mail,
+			'Nombre: '+nombre+'Teléfono: '+telefono+'Correo: '+mail,
 			'hola@fixter.org',
 			['rotcehcm@gmail.com'], fail_silently=False
 			)
