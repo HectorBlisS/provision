@@ -88,11 +88,12 @@ class RecibeGracias(View):
 			cliente_mail=form.data["mail"]
 			cliente_name=form.data["nombre"]
 			cliente_tel=form.data["tel"]
+			mensaje='Miguel, Tienes una nueva cotización pendiente http://www.provision.com.mx/seguimiento/inicio'
+			mensaje+='Nombre: ',cliente_name,'Telefono: ',cliente_tel,'Correo: ',cliente_mail
 			# Notificamos a miguel
 			send_mail(
 				'Sistema Terrenos',
-				'Miguel, Tienes una nueva cotización pendiente http://www.provision.com.mx/seguimiento/inicio'+
-				'Nombre: '+cliente_name+'Telefono: '+cliente_tel+'Correo: '+cliente_mail,
+				mensaje,
 				'sistema@fixter.org',
 				['rotcehcm@hotmail.com'], fail_silently=False
 				)
