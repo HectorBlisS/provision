@@ -194,4 +194,4 @@ SOCIAL_AUTH_PIPELINE = (
     'social.pipeline.user.user_details'
 )
 
-FILE_CHARSET='UTF-8'
+
