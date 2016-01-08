@@ -88,16 +88,20 @@ class RecibeGracias(View):
 			cliente_mail=form.data["mail"]
 			cliente_name=form.data["nombre"]
 			cliente_tel=form.data["tel"]
-			mensaje='Miguel, Tienes una nueva cotización pendiente http://www.pro-vision.com.mx/seguimiento/inicio/\n'
+			cliente_tam=form.data["size"]
+			cliente_plazo=form.data["plazo"]
+			mensaje='Miguel, Tienes una nueva cotización pendiente DESDE PROVISION. http://www.pro-vision.com.mx/seguimiento/inicio/\n'
 			mensaje+='Nombre: '+str(cliente_name)
 			mensaje+='\nTelefono: '+str(cliente_tel)
 			mensaje+='\nCorreo: '+str(cliente_mail)
+			mensaje+='\nTamaño: '+str(cliente_tam)
+			mensaje+='\nPlazo: '+str(cliente_plazo)
 			# Notificamos a miguel
 			send_mail(
 				'Sistema Terrenos',
 				mensaje,
 				'sistema@fixter.org',
-				['pro_vision@hotmail.com'], fail_silently=False
+				['tterrenofacil@gmail.com'], fail_silently=False
 				)
 			# agradecemos al cliente y enviamos info
 			send_mail(
@@ -146,10 +150,12 @@ class TerrenoFacilForm(View):
 			)
 		newPregunta.save()
 	# Notificamos a miguel
-		mensaje='Miguel, Tienes una nueva cotización pendiente http://www.pro-vision.com.mx/seguimiento/inicio/\n'
+		mensaje='Miguel, Tienes una nueva cotización pendiente DESDE TERRENOFACIL http://www.pro-vision.com.mx/seguimiento/inicio/\n'
 		mensaje+='Nombre: '+str(nombre)
 		mensaje+='\nTelefono: '+str(telefono)
 		mensaje+='\nCorreo: '+str(mail)
+		mensaje+='\nTamaño: '+str(size)
+		mensaje+='\nPlazo: '+str(plazo)
 
 		send_mail(
 			'Sistema Terrenos',

@@ -40,13 +40,14 @@ section{
 	text-align: center;
 
 }
-#val h2{
+.val h2{
 	font-family: 'Poiret One', cursive;
 	margin: 0 auto;
 	font-size: 5rem;
 	text-align: center;
 }
 #primero{
+	text-align: center;
 	height: 100vh;
 	background:rgba(0,0,0,.2);
 }
@@ -84,6 +85,9 @@ hr {
 	background-color:#00b0ff;
 
 }
+#video-pachu{
+	max-width: 600px;
+}
 
 label {
      
@@ -98,7 +102,7 @@ label {
 	#call-action{
 		font-size:1rem;
 	}
-	h2{
+	.val h2{
 		font-size:3rem;
 	}
 }
