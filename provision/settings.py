@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/1.9/ref/settings/
 """
 
 import os
+import dj_database_url
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -23,7 +24,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '#k36frmo&@$#tyx^tp9hwq9fy#5lm(z91yoil*v5vhkf_o#)y='
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ["*"]
 
@@ -83,23 +84,25 @@ WSGI_APPLICATION = 'provision.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.9/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
-}
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#     }
+# }
 
 # DATABASES = {
 #     'default': {
-#         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': 'ddrlqqrjkt7f72',
-#         'USER': 'jbgpkdcyfzixqj',
-#         'PASSWORD': 'efPLAyPAvmvc8N_mKaZ5zr8Tm6',
-#         'HOST': 'ec2-54-204-12-25.compute-1.amazonaws.com',
-#         'PORT': '5432',
+#         'ENGINE': 'mysql.connector.django',
+#         'NAME': 'terrenofacil',
+#         'USER': 'terrenofacil',
+#         'PASSWORD': 'terrenofacil',
+#         'HOST': '192.186.197.105',
+#         'PORT': '3306',
 #     }
 # }
+
+DATABASES['default'] =  dj_database_url.config()
 
 
 # Password validation
