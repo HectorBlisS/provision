@@ -97,7 +97,7 @@ class RecibeGracias(View):
 				'Sistema Terrenos',
 				mensaje,
 				'sistema@fixter.org',
-				['rotcehcm@hotmail.com'], fail_silently=False
+				['pro_vision@hotmail.com'], fail_silently=False
 				)
 			# agradecemos al cliente y enviamos info
 			send_mail(
@@ -155,7 +155,7 @@ class TerrenoFacilForm(View):
 			'Sistema Terrenos',
 			mensaje,
 			'hola@fixter.org',
-			['rotcehcm@gmail.com'], fail_silently=False
+			['tterrenofacil@gmail.com'], fail_silently=False
 			)
 	# agradecemos al cliente y enviamos info
 		send_mail(
