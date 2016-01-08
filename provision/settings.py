@@ -91,18 +91,18 @@ WSGI_APPLICATION = 'provision.wsgi.application'
 #     }
 # }
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'mysql.connector.django',
-#         'NAME': 'terrenofacil',
-#         'USER': 'terrenofacil',
-#         'PASSWORD': 'terrenofacil',
-#         'HOST': '192.186.197.105',
-#         'PORT': '3306',
-#     }
-# }
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'danr2prfn23u59',
+        'USER': 'jlheyklubhtdai',
+        'PASSWORD': 'Sn4nyV3RKCsYJPUC5F8Ga_ZZON',
+        'HOST': 'ec2-54-83-52-71.compute-1.amazonaws.com',
+        'PORT': '5432',
+    }
+}
 
-DATABASES['default'] =  dj_database_url.config()
+# DATABASES['default'] =  dj_database_url.config()
 
 
 # Password validation
