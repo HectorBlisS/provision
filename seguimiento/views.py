@@ -86,12 +86,15 @@ class RecibeGracias(View):
 			pregunta=form.save()
 			# Bajamos el mail del cliente
 			cliente_mail=form.data["mail"]
+			cliente_name=form.data["nombre"]
+			cliente_tel=form.data["tel"]
 			# Notificamos a miguel
 			send_mail(
 				'Sistema Terrenos',
-				'Miguel, Tienes una nueva cotización pendiente http://www.provision.com.mx/',
+				'Miguel, Tienes una nueva cotización pendiente http://www.provision.com.mx/seguimiento/inicio'+
+				'Nombre: '+cliente_name+'Telefono: '+cliente_tel+'Correo: '+cliente_mail,
 				'sistema@fixter.org',
-				['pro_vision@hotmail.com'], fail_silently=False
+				['rotcehcm@hotmail.com'], fail_silently=False
 				)
 			# agradecemos al cliente y enviamos info
 			send_mail(
@@ -142,9 +145,10 @@ class TerrenoFacilForm(View):
 	# Notificamos a miguel
 		send_mail(
 			'Sistema Terrenos',
-			'Miguel, Tienes una nueva cotización pendiente http://www.provision.com.mx/',
+			'Miguel, Tienes una nueva cotización pendiente http://www.provision.com.mx/seguimiento/inicio'+
+			'Nombre: 'nombre+'Teléfono: '+telefono+'Correo: '+mail,
 			'hola@fixter.org',
-			['tterrenofacil@gmail.com'], fail_silently=False
+			['rotcehcm@gmail.com'], fail_silently=False
 			)
 	# agradecemos al cliente y enviamos info
 		send_mail(
