@@ -1,4 +1,4 @@
-# -*- coding: utf-8 -*-
+# -*- encoding: utf-8 -*-
 from django.shortcuts import render, redirect, get_object_or_404
 from django.views.generic import View, TemplateView
 from main.forms import preguntaForm
@@ -73,6 +73,17 @@ class Revisar(View):
 		# 	msj.contacto=formateada
 		msj.save()
 		return redirect("_inicio")
+
+class Borra(View):
+	def get(self,request,id):
+		print("entro")
+		msj=get_object_or_404(NuevaPregunta,pk=id)
+		msj.delete()
+		return redirect("_inicio")
+
+
+
+		
 
 class RecibeGracias(View):
 	def get(self,request):

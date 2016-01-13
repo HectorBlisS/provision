@@ -29,6 +29,11 @@ urlpatterns = [
     url(r'^thanks/$',
         views.TakeForm.as_view(),
         name='_daform'),
+
+    url(r'^borra/(?P<id>\d+)',
+        views.Borra.as_view(),
+        name='_borra'),
+
     
 
 	]

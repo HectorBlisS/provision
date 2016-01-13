@@ -55,12 +55,17 @@
 
       </div>
 
-        <a class="waves-effect waves-light btn right red"><i class="material-icons left">done_all</i>Cerrado!</a>
+        <a class="waves-effect waves-light btn right modal-trigger red" href="#modal1">
+        <i class="material-icons left">done_all</i>
+        Eliminar!
+        </a>
+
 
          <button type="submit" class="waves-effect waves-light btn right orange"><i class="material-icons left">done</i>Pendiente</button>
 
          <a href="{%url '_inicio'%}"class="waves-effect waves-light btn left green"><i class="material-icons left">youtube_searched_for</i>Volver</a>
 
+        
         
 
 
@@ -77,5 +82,19 @@
 
 </div>
 </div>
+
+
+<!-- Modal Structure -->
+  <div id="modal1" class="modal">
+    <div class="modal-content">
+      <h4>Borrar Formulario</h4>
+      <p>¿Estas seguro de borrar este formulario? se borrará permanentemente.</p>
+    </div>
+    <div class="modal-footer">
+      <a href="{%url '_borra' mensaje.id%}" class="red modal-action modal-close waves-effect waves-green btn-flat">Borrar</a>
+      <a href="#" class=" modal-action modal-close waves-effect waves-green btn-flat">Cancelar</a>
+    </div>
+  </div>
+
 
 {%endblock%}
