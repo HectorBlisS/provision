@@ -18,6 +18,7 @@ class preguntaForm(forms.ModelForm):
 		field_classes=("browser-default",)
 
 		widgets = {
+		'mail':forms.TextInput(attrs={'class':'validate',}),
 		# 'size': Select(attrs={'class': "browser-default",}),
 		# 'plazo':Select(attrs={'class':'browser-default',})
 		}

@@ -10,34 +10,30 @@
   
   Your browser does not support the video tag.
 </video>
+<section id="primero" class="section">
+	<article class="container">
+		<h2 id="titulo">Una decición inteligente para tu futuro.</h2>
+		
+	<div class="vid-portada">
+	
+	
+		<div class="video-container">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/oH3GigPxoOY" frameborder="0" allowfullscreen></iframe>
+      </div>
 
+	
+     </div>
 
-<section id="primero"class="val section">
-
-<div class="row">
-<br>
-<br>
-<br>
-<br>
-<h2 class=" white-text col m12">Una decición inteligente para tu futuro.</h2>
-<br>
-
-
-<div class="vide-container">
-	<iframe width="560" height="315" src="https://www.youtube.com/embed/oH3GigPxoOY" frameborder="0" allowfullscreen></iframe>
-</div>
-
-
-
-<a href="#contacto" id="call-action"class="waves-effect waves-light btn blue ">
+	<br>
+	<br>
+	<br>
+     <a href="#contacto" id="call-action"class="waves-effect waves-light btn blue ">
 <i class="material-icons right">room</i>¡Cotiza un terreno ya mismo!</a>
-</div>
 
-
-
-
-
+	</article>
+	
 </section>
+
 
 <section class="section white">
 
@@ -120,27 +116,70 @@
 
 
 <section id="contacto" class="section grey lighten-5">
-
-<br>
-<br>
-
-	<article class="row container">
+	<article class="container">
 	<h2>Contáctanos</h2>	
 	<p class="descrip">En breve un asesor se comunicará contigo para atenderte correctamente.</p>
 	<hr>
-		<img class="responsive-img col m6" src="{%static 'media/easy.png'%}" alt="">
-		<form class="col m6" method="POST" action="{%url '_recibe'%}">
+
+		<form class="white" method="POST" action="{%url '_daform'%}">
 		{% csrf_token %}
-		{{ form.as_p }}
+
+
+		<div class="row">
+
+        <div class="input-field col s12 m6">
+          <i class="material-icons prefix">account_circle</i>
+          <input required="true" name="name"id="icon_prefix" type="text" class="validate">
+          <label for="icon_prefix">Nombre Completo</label>
+        </div>
+
+        <div class="input-field col s12 m6">
+          <i class="material-icons prefix">phone</i>
+          <input required="true" name="tel"id="icon_telephone" type="tel" class="validate">
+          <label for="icon_telephone">Teléfono</label>
+        </div>
+
+        <div class="input-field col s12">
+          <i class="material-icons prefix">mail</i>
+          <input required="true" name="mail"id="email" type="email" class="validate">
+          <label for="email" data-error="Ingrese un Email válido" data-success="Email válido">E-Mail</label>
+        </div>
+
+        <div class="input-field col s12 m6">
+		    <select name="size">
+		      <option value="" disabled selected>Escoge un tamaño: </option>
+		      <option value="120m">120m</option>
+		      <option value="150m">150m</option>
+		      <option value="300m">300m</option>
+		      <option value="Otro Tamaño">Otro</option>
+		    </select>
+		    <label>¿De qué tamaño te gustaria tu terreno?</label>
+		  </div>
+
+		   <div class="input-field col s12 m6">
+		    <select name="plazo">
+		      <option value="" disabled selected>Escoge un plazo: </option>
+		      <option value="12 meses">1 año</option>
+		      <option value="24 meses">2 años</option>
+		      <option value="36 meses">3 años</option>
+		      <option value="60 meses">5 años</option>
+		    </select>
+		    <label>¿A qué plazo te gustaría pagarlo?</label>
+		  </div>
+
+        
+
+      	</div>
+
 		<button type="submit" class=" save btn btn-default">
-		Solicitar
+		Cotizar
 		</button>
-			
+
 		</form>
-		
+
+		<img class="responsive-img col m6" src="{%static 'media/easy.png'%}" alt="">
 
 	</article>
-	
 </section>
 
 

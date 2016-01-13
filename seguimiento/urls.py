@@ -26,4 +26,9 @@ urlpatterns = [
         views.TerrenoFacilForm.as_view(),
         name='_tfacil'),
 
+    url(r'^thanks/$',
+        views.TakeForm.as_view(),
+        name='_daform'),
+    
+
 	]

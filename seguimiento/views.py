@@ -120,6 +120,49 @@ class RecibeGracias(View):
 			"form":form
 			}
 			return render(request,template_name,context)
+class TakeForm(View):
+	def get(self,request):
+		template="main/gracias.html"
+		return render(request,template)
+
+	def post(self,request):
+		nombre=request.POST.get("name","")
+		nombre+=" - PVision"
+		telefono=request.POST.get("tel","")
+		mail=request.POST.get("mail","")
+		size=request.POST.get("size","")
+		plazo=request.POST.get("plazo")
+
+		newPregunta=NuevaPregunta(
+			nombre=nombre,
+			tel=telefono,
+			mail=mail,
+			size=size,
+			plazo=plazo,
+			)
+		newPregunta.save()
+	# Notificamos a miguel
+		mensaje='Miguel, Tienes una nueva cotización pendiente DESDE PROVISION. http://www.pro-vision.com.mx/seguimiento/inicio/\n'
+		mensaje+='Nombre: '+str(nombre)
+		mensaje+='\nTelefono: '+str(telefono)
+		mensaje+='\nCorreo: '+str(mail)
+		mensaje+='\nTamaño: '+str(size)
+		mensaje+='\nPlazo: '+str(plazo)
+		send_mail(
+			'Sistema Terrenos',
+			mensaje,
+			'sistema@fixter.org',
+			['tterrenofacil@gmail.com'], fail_silently=False
+			)	
+	# agradecemos al cliente y enviamos info
+		send_mail(
+			'Gracias por tu interez!',
+			'Pronto te haremos una llamada.',
+			'tterrenofacil@gmail.org',
+			[mail], fail_silently=False
+			)
+		return redirect('_daform')
+
 
 class Login(View):
 	def get(self,request):

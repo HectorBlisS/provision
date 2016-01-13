@@ -13,6 +13,7 @@
     background-size: cover;
     transition: 1s opacity;
     opacity: 1;
+
 }
 
 
@@ -35,17 +36,17 @@ section{
 	max-height: 4.2rem;
 	width: auto;
 }
-
-#val{
-	text-align: center;
-
-}
-.val h2{
+#titulo{
 	font-family: 'Poiret One', cursive;
-	margin: 0 auto;
-	font-size: 5rem;
-	text-align: center;
+	color:white;
+	margin-top: 6rem;
 }
+.vid-portada{
+	max-width: 500px;
+	margin:0 auto;
+}
+
+
 #primero{
 	text-align: center;
 	height: 100vh;
