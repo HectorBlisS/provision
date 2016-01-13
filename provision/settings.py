@@ -1,4 +1,4 @@
-#! /usr/bin/python
+#! /app/.heroku/python
 # -*- coding: UTF-8-*-
 import os
 import dj_database_url
