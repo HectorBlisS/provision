@@ -143,7 +143,7 @@ class TakeForm(View):
 		newPregunta.save()
 	# Notificamos a miguel
 		mensaje='Miguel, Tienes una nueva cotización pendiente DESDE PROVISION. http://www.pro-vision.com.mx/seguimiento/inicio/\n'
-		mensaje+='Nombre: '+unicode(nombre)
+		mensaje+='Nombre: '+nombre.encode("utf-8")
 		mensaje+='\nTelefono: '+str(telefono)
 		mensaje+='\nCorreo: '+str(mail)
 		mensaje+='\nTamaño: '+str(size)
