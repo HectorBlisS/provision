@@ -183,4 +183,22 @@ SOCIAL_AUTH_PIPELINE = (
     'social.pipeline.user.user_details'
 )
 
+#Celery Stuff LOCAL
+# BROKER_URL='redis://localhost:6379'
+# CELERY_RESULT_BACKEND='redis://localhost:6379'
+
+# Celery Stuff Heroku
+BROKER_URL='redis://h:p37plo67rvej6ef38ndjtsvhr91@ec2-107-21-254-141.compute-1.amazonaws.com:19289'
+CELERY_RESULT_BACKEND='redis://h:p37plo67rvej6ef38ndjtsvhr91@ec2-107-21-254-141.compute-1.amazonaws.com:19289'
+REDIS_URL='redis://h:p37plo67rvej6ef38ndjtsvhr91@ec2-107-21-254-141.compute-1.amazonaws.com:19289'
+
+
+
+CELERY_ACCEPT_CONTENT=['application/json']
+CELERY_TASK_SERIALIZER='json'
+CELERY_RESULT_SERIALIZER='json'
+CELERY_TIMEZONE='America/Mexico_City'
+
+
+
 
