@@ -19,6 +19,10 @@ from django.core.urlresolvers import reverse
 
 from django.utils import timezone
 
+from django.core.urlresolvers import reverse
+from django.http import HttpResponseRedirect
+
+
 # Create your views here.
 # class SeguiIndex(View):
 # 	def get(self,request):
@@ -55,28 +59,40 @@ class Revisar(View):
 		# print("el nombre",msj.nombre)
 		msj.tel=request.POST.get("tel","")
 		msj.mail=request.POST.get("mail","")
-		msj.comentario=request.POST.get("coment","")
 		# Formateamos la fecha
 		fecha=request.POST.get("contacto","")
-		print(fecha)
-		# print("sin formato: ",fecha)
-		if fecha!="None":
-			try:
-				formateada = datetime.strptime(fecha, '%d %B, %Y')
-			except:
-				formateada=datetime.strptime(fecha,'%b. %d, %Y')
-			# print("formateada: ",formateada)
-			msj.contacto=formateada
-		# msj.nombre=request.POST.get("state","")
-		# if fecha==None:
-		# 	formateada="None"
-		# 	msj.contacto=formateada
+		msj.size=request.POST.get("size","")
+		msj.plazo=request.POST.get("plazo","")
+
+		msj.save()
+		
+		return HttpResponseRedirect(reverse('_revisar', args=(id,)))
+
+class Revisado(View):
+	def post(self,request,id):
+		print("Entro")
+		msj=get_object_or_404(NuevaPregunta,pk=id)
+		print("selecciono objeto")
+		msj.comentario=request.POST.get("coment","")
+
+		contacto=request.POST.get("contacto","")
+		fecha_llamada=request.POST.get("fecha_llamada","")
+		# formateamos fecha
+		if not contacto=="None":
+			msj.contacto=formateaFecha(contacto)
+		else:
+			msj.contacto=None
+		if not fecha_llamada=="None":
+			msj.fecha_llamada=formateaFecha(fecha_llamada)
+		else:
+			msj.fecha_llamada=None
+		# guardamos
 		msj.save()
 		return redirect("_inicio")
 
 class Borra(View):
 	def get(self,request,id):
-		print("entro")
+		# print("entro")
 		msj=get_object_or_404(NuevaPregunta,pk=id)
 		msj.delete()
 		return redirect("_inicio")
@@ -226,7 +242,12 @@ class TerrenoFacilForm(View):
 			)
 		return redirect("http://www.terrenofacil.com.mx/gracias.html")
 
-
+def formateaFecha(fecha):
+	try:
+		formateada = datetime.strptime(fecha, '%d %B, %Y')
+	except:
+		formateada=datetime.strptime(fecha,'%b. %d, %Y')
+	return formateada
 
 
 

@@ -15,6 +15,7 @@ class NuevaPregunta(models.Model):
 	comentario=models.TextField(blank=True,null=True)
 	cerrado=models.BooleanField(default=False)
 	contacto=models.DateField(default=None,blank=True,null=True)
+	fecha_llamada=models.DateField(default=None,blank=True,null=True)
 
 	def __str__(self):
 		return self.nombre

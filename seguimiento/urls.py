@@ -34,6 +34,11 @@ urlpatterns = [
         views.Borra.as_view(),
         name='_borra'),
 
+    # Guardar comentario del contacto
+    url(r'^revisado/(?P<id>\d+)',
+        views.Revisado.as_view(),
+        name='_add-coment'),
+
     
 
 	]

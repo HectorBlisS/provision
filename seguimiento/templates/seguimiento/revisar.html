@@ -6,9 +6,108 @@
 <div class="container">
 
 
+<div class="row">
 
-  <div class="row white">
-    <form method="post" class="col s12">
+<ul class="col m6 collection with-header">
+
+        <li class="collection-header">Nombre</li>
+        <li class="collection-item"><h5>{{mensaje.nombre}}</h5></li>
+
+        <li class="collection-header">Teléfono</li>
+
+        <li class="collection-item">
+          <a href="tel:{{mensaje.tel}}"><h5>{{mensaje.tel}}</h5></a>
+        </li>
+        
+        <li class="collection-header">E-Mail</li>
+        <li class="collection-item">
+        <a href="mailto:{{mensaje.mail}}?subject=Gracias por Tu interez">
+        <h5>{{mensaje.mail}}</h5>
+        </a>
+        </li>
+
+      </ul>
+
+<ul class="col m6 collection with-header">
+
+        <li class="collection-header">Plazo</li>
+        <li class="collection-item"><h5>{{mensaje.plazo}}</h5></li>
+        <li class="collection-header">Tamaño</li>
+        <li class="collection-item"><h5>{{mensaje.size}}</h5></li>
+        
+        <li class="collection-header">Fecha de llegada</li>
+        <li class="collection-item"><h5>{{mensaje.date}}</h5></li>
+      </ul>
+
+<form method="post" action="{%url '_add-coment' mensaje.id%}">
+{%csrf_token%}
+     <div class="col m12 white row">
+
+     <div class="white input-field col m6">
+          <textarea name="coment"class="materialize-textarea">{{mensaje.comentario}}</textarea>
+          <label for="textarea1">Comentar</label>
+        </div>
+
+      <div class="col m6 row">
+
+           <div class="input-field m12">
+        <input value="{{mensaje.fecha_llamada}}"
+        name="fecha_llamada"id="fecha_llamada" type="date" class="datepicker">
+        <label for "fecha">Fecha de Llamada</label>
+        </div>
+
+        <div class="input-field m12">
+        <input value="{{mensaje.contacto}}"
+        name="contacto"id="contacto" type="date" class="datepicker">
+        <label for "fecha">Proxima llamada</label>
+        </div>
+
+     </div>
+     </div>
+
+   
+
+</div>
+        <a class="waves-effect waves-light btn right modal-trigger red" href="#modal1">
+        <i class="material-icons left">done_all</i>
+        Eliminar!
+        </a>
+
+
+         <button type="submit" class="waves-effect waves-light btn right orange"><i class="material-icons left">done</i>Pendiente</button>
+
+         <a class="waves-effect waves-light btn right modal-trigger blue" href="#modal2">
+        <i class="material-icons left">info_outline</i>
+        Editar
+        </a>
+</form>
+
+         <a href="{%url '_inicio'%}"class="waves-effect waves-light btn left green"><i class="material-icons left">youtube_searched_for</i>Volver</a>
+
+
+
+
+
+</div>
+</div>
+
+
+<!-- Modal Structure -->
+  <div id="modal1" class="modal">
+    <div class="modal-content">
+      <h4>Borrar Formulario</h4>
+      <p>¿Estas seguro de borrar este formulario? se borrará permanentemente.</p>
+    </div>
+    <div class="modal-footer">
+      <a href="{%url '_borra' mensaje.id%}" class="red modal-action modal-close waves-effect waves-green btn-flat">Borrar</a>
+      <a href="#" class="modal-action modal-close waves-effect waves-green btn-flat">Cancelar</a>
+    </div>
+  </div>
+
+  <!--Modal de edición-->
+
+    <div id="modal2" class="modal row white">
+    <form method="post" class="modal-content col s12">
     {% csrf_token %}
       <div class="row">
 
@@ -32,38 +131,23 @@
 
         <div class="input-field col s6">
           <i class="material-icons prefix">input</i>
-          <input disabled="disabled" value="{{mensaje.size}}" type="text" class="validate">
+          <input name="size"value="{{mensaje.size}}" type="text" class="validate">
           <label for="icon_telephone">Tamaño</label>
         </div>
 
         <div class="input-field col s6">
           <i class="material-icons prefix">av_timer</i>
-          <input disabled="disabled" value="{{mensaje.plazo}}" type="text" class="validate">
+          <input name="plazo"value="{{mensaje.plazo}}" type="text" class="validate">
           <label for="icon_telephone">Plazo</label>
         </div>
 
-        <div class="input-field col s6">
-        <input value="{{mensaje.contacto}}"name="contacto"id="fecha" type="date" class="datepicker">
-        <label for "fecha">Proximo Contacto</label>
-        </div>
-
-
-        <div class="input-field col s12">
-          <textarea name="coment"class="materialize-textarea">{{mensaje.comentario}}</textarea>
-          <label for="textarea1">Comentar</label>
-        </div>
 
       </div>
 
-        <a class="waves-effect waves-light btn right modal-trigger red" href="#modal1">
-        <i class="material-icons left">done_all</i>
-        Eliminar!
-        </a>
 
+         <button type="submit" class="waves-effect waves-light btn right green"><i class="material-icons left">done</i>Actualizar</button>
 
-         <button type="submit" class="waves-effect waves-light btn right orange"><i class="material-icons left">done</i>Pendiente</button>
-
-         <a href="{%url '_inicio'%}"class="waves-effect waves-light btn left green"><i class="material-icons left">youtube_searched_for</i>Volver</a>
+         <a href="#"class="modal-action modal-close waves-effect waves-light btn left red"><i class="material-icons left">youtube_searched_for</i>Cancelar</a>
 
         
         
@@ -71,29 +155,6 @@
 
 
     </form>
-  </div>
-
-
-
-
-
-
-</form>
-
-</div>
-</div>
-
-
-<!-- Modal Structure -->
-  <div id="modal1" class="modal">
-    <div class="modal-content">
-      <h4>Borrar Formulario</h4>
-      <p>¿Estas seguro de borrar este formulario? se borrará permanentemente.</p>
-    </div>
-    <div class="modal-footer">
-      <a href="{%url '_borra' mensaje.id%}" class="red modal-action modal-close waves-effect waves-green btn-flat">Borrar</a>
-      <a href="#" class=" modal-action modal-close waves-effect waves-green btn-flat">Cancelar</a>
-    </div>
   </div>
 
 
