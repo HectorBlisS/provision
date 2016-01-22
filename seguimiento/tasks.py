@@ -22,10 +22,10 @@ def contactar():
 	for pregunta in preguntas:
 		if pregunta.contacto==hoy:
 			mensaje+='Recuerda llamar HOY a: \n'
-			mensaje+='\nNombre: '+str(pregunta.nombre)
-			mensaje+='\nTeléfono: '+str(pregunta.tel)
-			mensaje+='\nTamaño: '+str(pregunta.size)
-			mensaje+='\nPlazo: '+str(pregunta.plazo)
+			# mensaje+='\nNombre: '+str(pregunta.nombre)
+			# mensaje+='\nTeléfono: '+str(pregunta.tel)
+			# mensaje+='\nTamaño: '+str(pregunta.size)
+			# mensaje+='\nPlazo: '+str(pregunta.plazo)
 			print("Enviando Mail")
 			mail="contacto@fixter.org"
 			send_mail(
