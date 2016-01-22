@@ -14,22 +14,23 @@ def contactar():
 	pass
 	preguntas=NuevaPregunta.objects.all()
 	hoy=datetime.date.today()
-	mensaje=""
+	mail="tterrenofacil@gmail.com"
 	# try:
 	# 	formateada = datetime.strptime(hoy, '%d %B, %Y')
 	# except:
 	# 	formateada=datetime.strptime(hoy,'%b. %d, %Y')
 	for pregunta in preguntas:
 		if pregunta.contacto==hoy:
+			mensaje=""
 			mensaje+='Recuerda llamar HOY a: \n'
 			mensaje+='\nNombre: '+str(pregunta.nombre)
 			mensaje+='\nTeléfono: '+str(pregunta.tel)
 			mensaje+='\nTamaño: '+str(pregunta.size)
 			mensaje+='\nPlazo: '+str(pregunta.plazo)
 			print("Enviando Mail")
-			mail="tterrenofacil@gmail.com"
+			
 			send_mail(
-			'PROBANDO LAS ALERTAS RECORDATORIO.',
+			'RECORDATORIO',
 			mensaje,
 			'tterrenofacil@gmail.org',
 			[mail], fail_silently=False
