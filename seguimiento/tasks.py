@@ -27,7 +27,7 @@ def contactar():
 			mensaje+='\nTamaño: '+str(pregunta.size)
 			mensaje+='\nPlazo: '+str(pregunta.plazo)
 			print("Enviando Mail")
-			mail="contacto@fixter.org"
+			mail="tterrenofacil@gmail.com"
 			send_mail(
 			'PROBANDO LAS ALERTAS RECORDATORIO.',
 			mensaje,
