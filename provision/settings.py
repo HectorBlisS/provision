@@ -73,23 +73,23 @@ WSGI_APPLICATION = 'provision.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.9/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-#     }
-# }
-
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'danr2prfn23u59',
-        'USER': 'jlheyklubhtdai',
-        'PASSWORD': 'Sn4nyV3RKCsYJPUC5F8Ga_ZZON',
-        'HOST': 'ec2-54-83-52-71.compute-1.amazonaws.com',
-        'PORT': '5432',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'NAME': 'danr2prfn23u59',
+#         'USER': 'jlheyklubhtdai',
+#         'PASSWORD': 'Sn4nyV3RKCsYJPUC5F8Ga_ZZON',
+#         'HOST': 'ec2-54-83-52-71.compute-1.amazonaws.com',
+#         'PORT': '5432',
+#     }
+# }
 
 # DATABASES['default'] =  dj_database_url.config()
 
@@ -182,5 +182,23 @@ SOCIAL_AUTH_PIPELINE = (
     'social.pipeline.social_auth.load_extra_data',
     'social.pipeline.user.user_details'
 )
+
+#Celery Stuff LOCAL
+# BROKER_URL='redis://localhost:6379'
+# CELERY_RESULT_BACKEND='redis://localhost:6379'
+
+# Celery Stuff Heroku
+BROKER_URL='redis://h:p37plo67rvej6ef38ndjtsvhr91@ec2-107-21-254-141.compute-1.amazonaws.com:19289'
+CELERY_RESULT_BACKEND='redis://h:p37plo67rvej6ef38ndjtsvhr91@ec2-107-21-254-141.compute-1.amazonaws.com:19289'
+REDIS_URL='redis://h:p37plo67rvej6ef38ndjtsvhr91@ec2-107-21-254-141.compute-1.amazonaws.com:19289'
+
+
+
+CELERY_ACCEPT_CONTENT=['application/json']
+CELERY_TASK_SERIALIZER='json'
+CELERY_RESULT_SERIALIZER='json'
+CELERY_TIMEZONE='America/Mexico_City'
+
+
 
 
