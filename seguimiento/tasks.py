@@ -9,7 +9,7 @@ import datetime
 
 # minute=0, hour='*/24'
 
-@periodic_task(run_every=(crontab(minute=0, hour='*/24')), name="contactar", ignore_result=True)
+@periodic_task(run_every=(crontab(minute=0, hour='8')), name="contactar", ignore_result=True)
 def contactar():
 	pass
 	preguntas=NuevaPregunta.objects.all()
