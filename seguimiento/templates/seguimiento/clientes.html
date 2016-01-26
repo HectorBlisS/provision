@@ -66,7 +66,11 @@
 
 	<a href="{%url '_revisar' msg.id%}">
 	 <li class="collection-item avatar">
-      <i class="material-icons circle green">insert_chart</i>
+   {%if msg.cerrado %}
+      <i class="material-icons circle orange">folder</i>
+    {%else%}
+      <i class="material-icons circle green">folder</i>
+    {%endif%}
       <span class="title">{{msg.nombre}}</span>
       <p>{{msg.size}}<br>
          {{msg.plazo}}

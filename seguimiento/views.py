@@ -53,7 +53,7 @@ class Revisar(View):
 		return render(request,template_name,context)
 		
 	def post(self,request,id):
-		# print ("entro al post")
+		# print ("entro a editar")
 		msj=get_object_or_404(NuevaPregunta,pk=id)
 		msj.nombre=request.POST.get("nombre","")
 		# print("el nombre",msj.nombre)
@@ -74,6 +74,7 @@ class Revisado(View):
 		msj=get_object_or_404(NuevaPregunta,pk=id)
 		print("selecciono objeto")
 		msj.comentario=request.POST.get("coment","")
+		msj.cerrado=True
 
 		contacto=request.POST.get("contacto","")
 		fecha_llamada=request.POST.get("fecha_llamada","")
