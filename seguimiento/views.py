@@ -170,18 +170,25 @@ class TakeForm(View):
 			)
 		newPregunta.save()
 	# Notificamos a miguel
-		mensaje='Miguel, Tienes una nueva cotización pendiente DESDE PROVISION. http://www.pro-vision.com.mx/seguimiento/inicio/\n'
-		mensaje+='Nombre: '+nombre.encode("utf-8")
-		mensaje+='\nTelefono: '+str(telefono)
-		mensaje+='\nCorreo: '+str(mail)
-		mensaje+='\nTamaño: '+str(size)
-		mensaje+='\nPlazo: '+str(plazo)
-		send_mail(
-			'Sistema Terrenos',
-			mensaje,
-			'sistema@fixter.org',
-			['tterrenofacil@gmail.com'], fail_silently=False
-			)	
+	# Con Plantilla:
+		datos={
+		'p':newPregunta
+		}
+		email_miguel(datos)
+
+	# Sin Plantilla:
+		# mensaje='Miguel, Tienes una nueva cotización pendiente DESDE PROVISION. http://www.pro-vision.com.mx/seguimiento/inicio/\n'
+		# mensaje+='Nombre: '+nombre.encode("utf-8")
+		# mensaje+='\nTelefono: '+str(telefono)
+		# mensaje+='\nCorreo: '+str(mail)
+		# mensaje+='\nTamaño: '+str(size)
+		# mensaje+='\nPlazo: '+str(plazo)
+		# send_mail(
+		# 	'Sistema Terrenos',
+		# 	mensaje,
+		# 	'sistema@fixter.org',
+		# 	['tterrenofacil@gmail.com'], fail_silently=False
+		# 	)	
 	# agradecemos al cliente y enviamos info
 		send_mail(
 			'Gracias por tu interez!',
@@ -221,19 +228,26 @@ class TerrenoFacilForm(View):
 			)
 		newPregunta.save()
 	# Notificamos a miguel
-		mensaje='Miguel, Tienes una nueva cotización pendiente DESDE TERRENOFACIL http://www.pro-vision.com.mx/seguimiento/inicio/\n'
-		mensaje+='Nombre: '+str(nombre)
-		mensaje+='\nTelefono: '+str(telefono)
-		mensaje+='\nCorreo: '+str(mail)
-		mensaje+='\nTamaño: '+str(size)
-		mensaje+='\nPlazo: '+str(plazo)
+	# con plantilla:
+		datos={
+		'p':newPregunta
+		}
+		email_miguel(datos)
 
-		send_mail(
-			'Sistema Terrenos',
-			mensaje,
-			'hola@fixter.org',
-			['tterrenofacil@gmail.com'], fail_silently=False
-			)
+	# sin plantilla:
+		# mensaje='Miguel, Tienes una nueva cotización pendiente DESDE TERRENOFACIL http://www.pro-vision.com.mx/seguimiento/inicio/\n'
+		# mensaje+='Nombre: '+str(nombre)
+		# mensaje+='\nTelefono: '+str(telefono)
+		# mensaje+='\nCorreo: '+str(mail)
+		# mensaje+='\nTamaño: '+str(size)
+		# mensaje+='\nPlazo: '+str(plazo)
+
+		# send_mail(
+		# 	'Sistema Terrenos',
+		# 	mensaje,
+		# 	'hola@fixter.org',
+		# 	['tterrenofacil@gmail.com'], fail_silently=False
+		# 	)
 	# agradecemos al cliente y enviamos info
 		send_mail(
 			'Gracias por tu interez!',
@@ -249,6 +263,24 @@ def formateaFecha(fecha):
 	except:
 		formateada=datetime.strptime(fecha,'%b. %d, %Y')
 	return formateada
+
+from django.template import Context
+from django.template.loader import get_template
+from django.core.mail import EmailMessage
+
+def email_miguel(datos):
+	subject="Nuevo Cliente"
+	to=['tterrenofacil@gmail.com']
+	from_email='tterrenofacil@gmail.com'
+	ctx=datos
+
+	message=get_template("seguimiento/email/nuevo.html").render(Context(ctx))
+	msg=EmailMessage(subject,message,to=to,from_email=from_email)
+	msg.content_subtype='html'
+	msg.send()
+
+# Envio de plantillas en nCorreo
+
 
 
 
