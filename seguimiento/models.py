@@ -21,7 +21,9 @@ class NuevaPregunta(models.Model):
 	fecha_llamada=models.DateField(default=None,blank=True,null=True)
 
 	def es_hoy(self):
-		if self.contacto==date.today():
+		fecha=str(self.contacto)
+		hoy=str(date.today())
+		if fecha<=hoy:
 			return True
 		else:
 			return False
