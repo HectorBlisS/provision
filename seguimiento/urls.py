@@ -18,6 +18,11 @@ urlpatterns = [
     views.Revisar.as_view(),
     name='_revisar'),
 
+    # Lista filtrada por revisados
+    url(r'^inicio/filtro/(?P<filtro>\w+)/$',
+        views.SeguiStatus.as_view(),
+        name='_inicio_filtro'),
+
     url(r'^login/$',
         views.Login.as_view(),
         name='_login'),

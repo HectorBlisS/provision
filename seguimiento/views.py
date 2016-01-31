@@ -32,12 +32,20 @@ from django.http import HttpResponseRedirect
 
 # class SeguiStatus(TemplateView):
 
-class SeguiStatus(View): # _inicio
+class SeguiStatus(View): # _inicio e _inicio_filtro
 
 	@method_decorator(permission_required("auth.adm", login_url='_home'))
-	def get(self,request):
+	def get(self,request,filtro=None):
+		hoy=datetime.now()
 		preguntas=NuevaPregunta.objects.all().order_by('-pk')
-		context={"mensajes":preguntas}
+		if filtro=="True":
+			preguntas=preguntas.filter(cerrado=True)
+		elif filtro=="False":
+			preguntas=preguntas.filter(cerrado=False)
+		elif filtro=="Hoy":
+			preguntas=preguntas.filter(contacto=datetime.now())
+			rojo=True
+		context={"mensajes":preguntas,'hoy':hoy}
 		template_name="seguimiento/clientes.html"
 		return render(request,template_name,context)
 

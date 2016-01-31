@@ -43,10 +43,18 @@
   <nav class="green">
     <div class="nav-wrapper">
       <div class="col s12">
-        <a href="#!" id="Todos" class="breadcrumb">Todos</a>
-        <a href="#!" id="Cerrados" class="breadcrumb">Cerrados</a>
-        <a href="#!" id="Revisados" class="breadcrumb">Revisados</a>
-        <a href="#!" id="Nuevos" class="breadcrumb">Nuevos</a>
+        <a href="{%url '_inicio'%}" id="Todos" class="breadcrumb">
+        Todos
+        </a>
+        <a href="{%url '_inicio_filtro' 'True'%}" id="Revisados" class="breadcrumb">
+        Revisados
+        </a>
+        <a href="{%url '_inicio_filtro' 'False'%}" id="Nuevos" class="breadcrumb">
+        Nuevos
+        </a>
+        <a href="{%url '_inicio_filtro' 'Hoy'%}" id="hoy" class="breadcrumb">
+        Para Hoy
+        </a>
       </div>
     </div>
   </nav>
@@ -64,13 +72,18 @@
 <ul class="collection">
 {%for msg in mensajes%}
 
-	<a href="{%url '_revisar' msg.id%}">
+	<a href="{{msg.get_url}}">
 	 <li class="collection-item avatar">
-   {%if msg.cerrado %}
+
+    {%if msg.es_hoy%}
+      <i class="material-icons circle red">folder</i>
+   {%elif msg.cerrado %}
       <i class="material-icons circle orange">folder</i>
     {%else%}
       <i class="material-icons circle green">folder</i>
     {%endif%}
+
+
       <span class="title">{{msg.nombre}}</span>
       <p>{{msg.size}}<br>
          {{msg.plazo}}
@@ -78,7 +91,10 @@
       <a href="#!" class="secondary-content"><i class="material-icons">query_builder</i>   // {{msg.date}}</a>
     </li>
     </a>
-
+{%empty%}
+<li class="collection-item">
+<span class="title">No hay Pendientes para hoy - ¡Tienes que vender más!</span>
+</li>
 {%endfor%}
 </ul>
 </div>
