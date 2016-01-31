@@ -55,6 +55,12 @@
         <a href="{%url '_inicio_filtro' 'Hoy'%}" id="hoy" class="breadcrumb">
         Para Hoy
         </a>
+        {%with mensajes.count as total_%}
+        <a class="breadcrumb right">
+          Clientes: {{total_}}
+        </a>
+        {%endwith%}
+
       </div>
     </div>
   </nav>
