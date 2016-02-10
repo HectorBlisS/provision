@@ -11,7 +11,6 @@ import datetime
 
 @periodic_task(run_every=(crontab(minute=0, hour='8')), name="contactar", ignore_result=True)
 def contactar():
-	pass
 	preguntas=NuevaPregunta.objects.all()
 	hoy=datetime.date.today()
 	mail="tterrenofacil@gmail.com"
@@ -21,17 +20,32 @@ def contactar():
 	# 	formateada=datetime.strptime(hoy,'%b. %d, %Y')
 	for pregunta in preguntas:
 		if pregunta.contacto==hoy:
-			mensaje=""
-			mensaje+='Recuerda llamar HOY a: \n'
-			mensaje+='\nNombre: '+str(pregunta.nombre)
-			mensaje+='\nTeléfono: '+str(pregunta.tel)
-			mensaje+='\nTamaño: '+str(pregunta.size)
-			mensaje+='\nPlazo: '+str(pregunta.plazo)
-			print("Enviando Mail")
+			datos={
+			'p':pregunta
+			}
+			email_miguel(datos)
+		# 	mensaje=""
+		# 	mensaje+='Recuerda llamar HOY a: \n'
+		# 	mensaje+='\nNombre: '+str(pregunta.nombre)
+		# 	mensaje+='\nTeléfono: '+str(pregunta.tel)
+		# 	mensaje+='\nTamaño: '+str(pregunta.size)
+		# 	mensaje+='\nPlazo: '+str(pregunta.plazo)
+		# 	print("Enviando Mail")
 			
-			send_mail(
-			'RECORDATORIO',
-			mensaje,
-			'tterrenofacil@gmail.org',
-			[mail], fail_silently=False
-			)
+		# 	send_mail(
+		# 	'RECORDATORIO',
+		# 	mensaje,
+		# 	'tterrenofacil@gmail.org',
+		# 	[mail], fail_silently=False
+		# 	)
+
+def email_miguel(datos):
+	subject="Nuevo Cliente"
+	to=['tterrenofacil@gmail.com']
+	from_email='tterrenofacil@gmail.com'
+	ctx=datos
+
+	message=get_template("seguimiento/email/remember.html").render(Context(ctx))
+	msg=EmailMessage(subject,message,to=to,from_email=from_email)
+	msg.content_subtype='html'
+	msg.send()subl
