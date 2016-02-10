@@ -39,6 +39,11 @@ def contactar():
 		# 	[mail], fail_silently=False
 		# 	)
 
+from django.template import Context
+from django.template.loader import get_template
+from django.core.mail import EmailMessage
+from django.shortcuts import render
+
 def email_miguel(datos):
 	subject="Nuevo Cliente"
 	to=['tterrenofacil@gmail.com']
