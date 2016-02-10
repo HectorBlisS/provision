@@ -45,7 +45,7 @@ from django.core.mail import EmailMessage
 from django.shortcuts import render
 
 def email_miguel(datos):
-	subject="Nuevo Cliente"
+	subject="RECORDATORIO"
 	to=['tterrenofacil@gmail.com']
 	from_email='tterrenofacil@gmail.com'
 	ctx=datos
