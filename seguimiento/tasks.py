@@ -48,4 +48,6 @@ def email_miguel(datos):
 	message=get_template("seguimiento/email/remember.html").render(Context(ctx))
 	msg=EmailMessage(subject,message,to=to,from_email=from_email)
 	msg.content_subtype='html'
-	msg.send()subl
+	msg.send()
+
+
