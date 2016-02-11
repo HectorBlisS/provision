@@ -84,9 +84,10 @@ class Revisado(View):
 		msj=get_object_or_404(NuevaPregunta,pk=id)
 		# Guardamos el comentario primero
 		comentario=Actualizacion()
-		comentario.body=request.POST.get('coment','')
-		comentario.pregunta=msj
-		comentario.save()
+		if request.POST.get('coment')!="":
+			comentario.body=request.POST.get('coment','Sin Comentario')
+			comentario.pregunta=msj
+			comentario.save()
 		# ahora el mensaje
 		# msj.comments=request.POST.get("coment","")
 		msj.cerrado=True
