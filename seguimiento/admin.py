@@ -1,12 +1,13 @@
 # -*- coding: utf-8 -*-
 from django.contrib import admin
-from .models import NuevaPregunta, Size, Plazo
+from .models import NuevaPregunta, Size, Plazo, Actualizacion
 from django.contrib.auth.models import Permission
 
 # admin.site.register(NuevaPregunta)
 admin.site.register(Size)
 admin.site.register(Plazo)
 admin.site.register(Permission)
+admin.site.register(Actualizacion)
 # Register your models here.
 
 class NuevaPreguntaAdmin(admin.ModelAdmin):

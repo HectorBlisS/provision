@@ -3,7 +3,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.views.generic import View, TemplateView
 from main.forms import preguntaForm
 from django.core.mail import send_mail
-from .models import NuevaPregunta, Size
+from .models import NuevaPregunta, Size, Actualizacion
 from django import forms
 from provision import settings
 from datetime import datetime
@@ -55,8 +55,10 @@ class Revisar(View):
 		print ("entro al get")
 		template_name="seguimiento/revisar.html"
 		mensaje=get_object_or_404(NuevaPregunta,pk=id)
+		comments=mensaje.comments.filter(active=True).order_by('-created')
 		context={
-		"mensaje":mensaje
+		"mensaje":mensaje,
+		"comments":comments
 		}
 		return render(request,template_name,context)
 		
@@ -80,10 +82,14 @@ class Revisado(View):
 	def post(self,request,id):
 		print("Entro")
 		msj=get_object_or_404(NuevaPregunta,pk=id)
-		print("selecciono objeto")
-		msj.comentario=request.POST.get("coment","")
+		# Guardamos el comentario primero
+		comentario=Actualizacion()
+		comentario.body=request.POST.get('coment','')
+		comentario.pregunta=msj
+		comentario.save()
+		# ahora el mensaje
+		# msj.comments=request.POST.get("coment","")
 		msj.cerrado=True
-
 		contacto=request.POST.get("contacto","")
 		fecha_llamada=request.POST.get("fecha_llamada","")
 		# formateamos fecha
@@ -91,10 +97,6 @@ class Revisado(View):
 			msj.contacto=formateaFecha(contacto)
 		else:
 			msj.contacto=None
-		if not fecha_llamada=="None":
-			msj.fecha_llamada=formateaFecha(fecha_llamada)
-		else:
-			msj.fecha_llamada=None
 		# guardamos
 		msj.save()
 		return redirect("_inicio")

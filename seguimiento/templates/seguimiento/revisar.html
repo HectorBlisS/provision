@@ -44,30 +44,22 @@
      <div class="col m12 white row">
 
      <div class="white input-field col m6">
-          <textarea name="coment"class="materialize-textarea">{{mensaje.comentario}}</textarea>
+          <textarea name="coment"class="materialize-textarea">
+            
+          </textarea>
           <label for="textarea1">Comentar</label>
         </div>
 
-      <div class="col m6 row">
-
-           <div class="input-field m12">
-        <input value="{{mensaje.fecha_llamada}}"
-        name="fecha_llamada"id="fecha_llamada" type="date" class="datepicker">
-        <label for "fecha">Fecha de Llamada</label>
-        </div>
-
-        <div class="input-field m12">
+        <div class="input-field col m6">
         <input value="{{mensaje.contacto}}"
         name="contacto"id="contacto" type="date" class="datepicker">
         <label for "fecha">Proxima llamada</label>
         </div>
 
      </div>
-     </div>
+     
 
-   
 
-</div>
         <a class="waves-effect waves-light btn right modal-trigger red" href="#modal1">
         <i class="material-icons left">done_all</i>
         Eliminar!
@@ -81,6 +73,31 @@
         Editar
         </a>
 </form>
+</div>
+
+<!--Comentarios anteriores-->
+
+  <div class="container">
+  {%with comments.count as total_comments%}
+  <h5>
+  {{total_comments}} Comentario{{total_comments|pluralize}}
+  </h5>
+  {%endwith%}
+  <ul class="collection">
+    {%if mensaje.comentario%}
+    <li class="collection-item">{{mensaje.comentario}}</li>
+    {%endif%}
+  {%for comment in comments%}
+      <li class="collection-item">{{comment.body}}
+        <span class="secondary-content">
+        {{comment.created}}
+      </span>
+    </li>
+    {%empty%}
+    <li>--Aún no se han hecho comentarios--</li>
+{%endfor%}
+    </ul>
+    </div>
 
          <a href="#modal3" class="waves-effect waves-light btn left green modal-trigger"><i class="material-icons left">youtube_searched_for</i>Volver</a>
 
