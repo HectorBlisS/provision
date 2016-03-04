@@ -144,7 +144,7 @@ MEDIA_URL = '/media/'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = '587'
 EMAIL_HOST_USER = 'tterrenofacil@gmail.com'
-EMAIL_HOST_PASSWORD = 'miguel741010'
+EMAIL_HOST_PASSWORD = 'Miguel741010'
 EMAIL_USE_TLS = True
 DEFAULT_FROM_EMAIL=False
 
