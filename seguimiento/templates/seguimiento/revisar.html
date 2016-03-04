@@ -86,8 +86,10 @@
     <li class="collection-item">{{mensaje.comentario}}</li>
     {%endif%}
   {%for comment in comments%}
-      <li class="collection-item">{{comment.body}}<br>
-        {{comment.created}}
+      <li class="collection-item">
+        <span class="blue-text">{{comment.created}}</span><br>
+        {{comment.body}}
+
         <span class="secondary-content">
       
       </span>
