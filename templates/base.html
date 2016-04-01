@@ -4,9 +4,9 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
-  {%block titulo%}
-  <title>Pro-Visión</title>
-  {%endblock titulo%}
+
+  <title>{%block titulo%}Pro-Visión{%endblock titulo%}</title>
+  
 
   <!-- CSS  -->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -33,11 +33,13 @@
       <li>
         <a class="grey-text" href="tel:63559341">Llámanos: 63559341</a>
       </li>
+       <li><a class="grey-text" href="{%url 'perfil:dashboard'%}">Acceso a Clientes</a></li>
         <li><a class="grey-text"href="{%url '_login'%}">Seguimiento</a></li>
 
       </ul>
 
       <ul id="nav-mobile" class="side-nav">
+        <li><a href="{%url 'perfil:dashboard'%}">Acceso a Clientes</a></li>
         <li><a href="{%url '_login'%}">Seguimiento</a></li>
       </ul>
       <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="grey-text material-icons">menu</i></a>

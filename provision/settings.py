@@ -33,6 +33,9 @@ INSTALLED_APPS = [
     'social.apps.django_app.default',
     # forms
     'materializecssform',
+    #Perfiles
+    'perfil',
+
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -153,6 +156,10 @@ DEFAULT_FROM_EMAIL=False
 # DATE_INPUT_FORMATS = ('%d-%m-%Y','%Y-%m-%d')
 
 LOGIN_URL='_login'
+
+from django.core.urlresolvers import reverse_lazy
+
+LOGIN_REDIRECT_URL = reverse_lazy('perfil:dashboard')
 
 
 # Social auth

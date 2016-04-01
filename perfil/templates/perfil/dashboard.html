@@ -1,0 +1,18 @@
+{%extends 'base.html'%}
+{%load static%}
+
+{%block titulo%}Perfil Personal{%endblock titulo%}
+
+{%block content%}
+
+<section class="container dash">
+
+<h3 class="center-align">
+Bienvenido {{request.user.first_name}} {{request.user.last_name}}
+</h3>
+
+
+</section>
+
+
+{%endblock content%}
