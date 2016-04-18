@@ -59,13 +59,11 @@ class Revisar(View):
 		comments=mensaje.comments.filter(active=True).order_by('-created')
 		extras=mensaje.extras.all()
 		form2=ExtraForm()
-		form=CitaForm()
 		context={
 		"mensaje":mensaje,
 		"comments":comments,
 		'form2':form2,
 		'extras':extras,
-		'form':form
 		}
 		return render(request,template_name,context)
 		
