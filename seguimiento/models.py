@@ -63,8 +63,10 @@ class Actualizacion(models.Model):
 		return 'Comentario en {}'.format(self.pregunta)
 
 
-
-
+class DatoExtra(models.Model):
+	nombre=models.CharField(max_length=100,null=True,blank=True)
+	dato=models.CharField(max_length=100)
+	pregunta=models.ForeignKey(NuevaPregunta,related_name='extras')
 
 
 

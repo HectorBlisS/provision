@@ -25,6 +25,15 @@
         <h5>{{mensaje.mail}}</h5>
         </a>
         </li>
+        <li class="collection-header">Datos Extra:</li>
+        {%for extra in extras%}
+        <li class="collection-item">
+        
+        <h5>{{extra.nombre}}</h5>
+        <h5>{{extra.dato}}</h5>
+        
+        </li>
+        {%endfor%}
 
       </ul>
 
@@ -169,6 +178,9 @@
           <i class="material-icons prefix">av_timer</i>
           <input name="plazo"value="{{mensaje.plazo}}" type="text" class="validate">
           <label for="icon_telephone">Plazo</label>
+        </div>
+        <div class="col s6">
+        {{form2.as_p}}
         </div>
 
 

@@ -22,6 +22,7 @@ from django.utils import timezone
 from django.core.urlresolvers import reverse
 from django.http import HttpResponseRedirect
 
+from .forms import ExtraForm, CitaForm
 
 # Create your views here.
 # class SeguiIndex(View):
@@ -56,9 +57,15 @@ class Revisar(View):
 		template_name="seguimiento/revisar.html"
 		mensaje=get_object_or_404(NuevaPregunta,pk=id)
 		comments=mensaje.comments.filter(active=True).order_by('-created')
+		extras=mensaje.extras.all()
+		form2=ExtraForm()
+		form=CitaForm()
 		context={
 		"mensaje":mensaje,
-		"comments":comments
+		"comments":comments,
+		'form2':form2,
+		'extras':extras,
+		'form':form
 		}
 		return render(request,template_name,context)
 		
@@ -73,8 +80,14 @@ class Revisar(View):
 		fecha=request.POST.get("contacto","")
 		msj.size=request.POST.get("size","")
 		msj.plazo=request.POST.get("plazo","")
-
 		msj.save()
+
+		# Dato ExtraForm
+		form=ExtraForm(request.POST)
+		ex=form.save(commit=False)
+		# print('el objeto: ',msj)
+		ex.pregunta=msj
+		ex.save()
 		
 		return HttpResponseRedirect(reverse('_revisar', args=(id,)))
 
