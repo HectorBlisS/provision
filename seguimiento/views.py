@@ -22,7 +22,7 @@ from django.utils import timezone
 from django.core.urlresolvers import reverse
 from django.http import HttpResponseRedirect
 
-from .forms import ExtraForm, CitaForm
+from .forms import ExtraForm
 
 # Create your views here.
 # class SeguiIndex(View):
