@@ -76,14 +76,27 @@ WSGI_APPLICATION = 'provision.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.9/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'NAME': 'danr2prfn23u59',
+#         'USER': 'jlheyklubhtdai',
+#         'PASSWORD': 'Sn4nyV3RKCsYJPUC5F8Ga_ZZON',
+#         'HOST': 'ec2-54-83-52-71.compute-1.amazonaws.com',
+#         'PORT': '5432',
+#     }
+# }
+
+# We need a dump
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'danr2prfn23u59',
-        'USER': 'jlheyklubhtdai',
-        'PASSWORD': 'Sn4nyV3RKCsYJPUC5F8Ga_ZZON',
-        'HOST': 'ec2-54-83-52-71.compute-1.amazonaws.com',
-        'PORT': '5432',
+        'NAME': 'provision',
+        'USER': 'bliss',
+        'PASSWORD': 'Poweroso77',
+        'HOST': 'localhost',
+        'PORT': '',
     }
 }
 
@@ -134,11 +147,12 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
 
 
-STATIC_ROOT = 'staticfiles'
+# STATIC_ROOT = 'staticfiles'
+STATIC_ROOT = os.path.join(BASE_DIR, "static/")
 STATIC_URL = '/static/'
 STATICFILES_DIRS=(os.path.join(BASE_DIR,"static"),)
 
-STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
+# STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 
 MEDIA_ROOT = os.path.join(BASE_DIR,'media')
 MEDIA_URL = '/media/'
