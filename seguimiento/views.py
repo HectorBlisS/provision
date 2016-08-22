@@ -140,26 +140,29 @@ class RecibeGracias(View):
 			cliente_tel=form.data["tel"]
 			cliente_tam=form.data["size"]
 			cliente_plazo=form.data["plazo"]
-			mensaje='Miguel, Tienes una nueva cotización pendiente DESDE PROVISION. http://www.pro-vision.com.mx/seguimiento/inicio/\n'
+			mensaje='Nueva Cotizacion DESDE PROVISION. http://www.pro-vision.com.mx/seguimiento/inicio/\n'
 			mensaje+='Nombre: '+str(cliente_name)
 			mensaje+='\nTelefono: '+str(cliente_tel)
 			mensaje+='\nCorreo: '+str(cliente_mail)
 			mensaje+='\nTamaño: '+str(cliente_tam)
 			mensaje+='\nPlazo: '+str(cliente_plazo)
 			# Notificamos a miguel
-			send_mail(
-				'Sistema Terrenos',
-				mensaje,
-				'sistema@fixter.org',
-				['tterrenofacil@gmail.com'], fail_silently=False
-				)
-			# agradecemos al cliente y enviamos info
-			send_mail(
-				'Gracias por tu interez!',
-				'Pronto te haremos una llamada.',
-				'tterrenofacil@gmail.org',
-				[cliente_mail], fail_silently=False
-				)
+			try:
+				send_mail(
+					'Sistema Terrenos',
+					mensaje,
+					'sistema@fixter.org',
+					['tterrenofacil@gmail.com'], fail_silently=False
+					)
+				# agradecemos al cliente y enviamos info
+				send_mail(
+					'Gracias por tu interez!',
+					'Pronto te haremos una llamada.',
+					'tterrenofacil@gmail.org',
+					[cliente_mail], fail_silently=False
+					)
+			except:
+				pass
 			return redirect('_recibe')
 
 			
@@ -196,7 +199,9 @@ class TakeForm(View):
 		datos={
 		'p':newPregunta
 		}
-		email_miguel(datos)
+		try:
+			email_miguel(datos)
+
 
 	# Sin Plantilla:
 		# mensaje='Miguel, Tienes una nueva cotización pendiente DESDE PROVISION. http://www.pro-vision.com.mx/seguimiento/inicio/\n'
@@ -212,12 +217,14 @@ class TakeForm(View):
 		# 	['tterrenofacil@gmail.com'], fail_silently=False
 		# 	)	
 	# agradecemos al cliente y enviamos info
-		send_mail(
-			'Gracias por tu interez!',
-			'Pronto te haremos una llamada.',
-			'tterrenofacil@gmail.org',
-			[mail], fail_silently=False
-			)
+			send_mail(
+				'Gracias por tu interez!',
+				'Pronto te haremos una llamada.',
+				'tterrenofacil@gmail.org',
+				[mail], fail_silently=False
+				)
+		except:
+			pass
 		return redirect('_daform')
 
 
@@ -254,7 +261,8 @@ class TerrenoFacilForm(View):
 		datos={
 		'p':newPregunta
 		}
-		email_miguel(datos)
+		try:
+			email_miguel(datos)
 
 	# sin plantilla:
 		# mensaje='Miguel, Tienes una nueva cotización pendiente DESDE TERRENOFACIL http://www.pro-vision.com.mx/seguimiento/inicio/\n'
@@ -271,12 +279,14 @@ class TerrenoFacilForm(View):
 		# 	['tterrenofacil@gmail.com'], fail_silently=False
 		# 	)
 	# agradecemos al cliente y enviamos info
-		send_mail(
-			'Gracias por tu interez!',
-			'Pronto te haremos una llamada.',
-			'tterrenofacil@gmail.org',
-			[mail], fail_silently=False
-			)
+			send_mail(
+				'Gracias por tu interez!',
+				'Pronto te haremos una llamada.',
+				'tterrenofacil@gmail.org',
+				[mail], fail_silently=False
+				)
+		except:
+			pass
 		return redirect("http://www.terrenofacil.com.mx/gracias.html")
 
 def formateaFecha(fecha):
